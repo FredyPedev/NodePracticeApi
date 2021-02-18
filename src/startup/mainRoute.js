@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
  const compression = require("compression");
- const {PageNoFoundMiddleware} = require("../app/modules/Middlewares");
+ const {PageNoFoundMiddleware} = require("../app/Middlewares");
 
 // require("express-async-errors");
 //const {NotFoundMiddleware,ErrorMiddleware} = require("../middleware");

@@ -3,9 +3,9 @@ const {createContainer,asClass,asValue,asFunction} = require("awilix");
 
 //TamerModule
 
-const {ClientController , Client , ClientRepository , ClientService , ClientRoutes }=require('../app/modules/clientModule');
+const {ClientController , Client , ClientRepository , ClientService , ClientRoutes }=require('../app/clientModule');
 //DigimonModule
-const {PetController, Pet , PetRepository , PetService , PetRoutes} = require ('../app/modules/petModule');
+const {PetController, Pet , PetRepository , PetService , PetRoutes} = require ('../app/petModule');
 
 const Routes = require("./mainRoute");
 
