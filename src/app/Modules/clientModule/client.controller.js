@@ -1,4 +1,4 @@
-
+const HashFun = require('../../helper/Hash');
 let _clientService = null;
 
 class ClientController{
@@ -20,6 +20,8 @@ class ClientController{
 
     async update(req, res) {
       const { body } = req;
+      const hashedpass =  HashFun(body.password)
+      body.password = hashedpass;
       const { clientId } = req.params;
       const updatedClient = await _clientService.update(clientId, body);
       return res.send(updatedClient);
@@ -28,7 +30,7 @@ class ClientController{
     async delete(req, res) {
       const { clientId } = req.params;
       const deletedClient= await _clientService.delete(clientId);
-      return res.send(deletedClient);
+      return res.send(`${deletedClient.name} was deleted`);
     }
 
 

@@ -10,7 +10,8 @@ const helmet = require("helmet");
 
 module.exports = function({
     clientRoutes,
-    petRoutes
+    petRoutes,
+    authRoutes
 }){
     
   
@@ -26,6 +27,7 @@ module.exports = function({
 
     
     apiRoutes.use("/client", clientRoutes );
+    apiRoutes.use("/auth", authRoutes );
     apiRoutes.use("/pet", petRoutes );
 
     apiRoutes.get('/' ,(req, res) => {

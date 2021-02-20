@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const {compareSync , hashSync, genSaltSync} = require("bcryptjs");
+const HashFunction = require("../../helper/Hash")
 const {Schema} = mongoose;
 
 const ClientSchema = new Schema({
@@ -14,11 +16,28 @@ const ClientSchema = new Schema({
 
 ClientSchema.methods.toJSON = function () {
     let client = this.toObject();
-    delete client.password;
+  //  delete client.password;
   //  delete client._id;
     delete client.__v;
     return client;
 }
+
+ClientSchema.methods.comparePaswords = (password)=>{
+  return compareSync(password, this.password)
+}
+
+
+ClientSchema.pre('save' , async function(next){
+  const client = this;
+  
+  if(!client.isModified("password")){
+      return next();
+  };
+  client.password = HashFunction(client.password);
+  next();
+}); 
+
+
 
 
 

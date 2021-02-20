@@ -1,11 +1,13 @@
 const {createContainer,asClass,asValue,asFunction} = require("awilix");
 //Config
 
-//TamerModule
 
-const {ClientController , Client , ClientRepository , ClientService , ClientRoutes }=require('../app/clientModule');
+//AuthModule
+const {AuthController , AuthRoutes , AuthService} = require('../app/Modules/authModule');
+//TamerModule
+const {ClientController , Client , ClientRepository , ClientService , ClientRoutes }=require('../app/Modules/clientModule');
 //DigimonModule
-const {PetController, Pet , PetRepository , PetService , PetRoutes} = require ('../app/petModule');
+const {PetController, Pet , PetRepository , PetService , PetRoutes} = require ('../app/Modules/petModule');
 
 const Routes = require("./mainRoute");
 
@@ -34,6 +36,11 @@ register({
     petService: asClass (PetService).singleton(),
     petModel: asValue (Pet),
     petRoutes: asFunction (PetRoutes).singleton()
+
+}).register({
+    authController: asClass(AuthController.bind(AuthController)).singleton(),
+    authService: asClass(AuthService).singleton(),
+    authRoutes: asFunction(AuthRoutes).singleton()
 
 });
 module.exports = container;

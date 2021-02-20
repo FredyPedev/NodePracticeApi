@@ -1,6 +1,6 @@
 let _petService = null;
 
-class DigimonController{
+class PetController{
     constructor({petService}){
 
         _petService = petService;
@@ -48,4 +48,4 @@ class DigimonController{
 }
 
 
-module.exports = DigimonController; 
+module.exports = PetController; 
